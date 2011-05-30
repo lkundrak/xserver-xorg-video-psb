@@ -1,0 +1,71 @@
+.\" shorthand for double quote that works everywhere.
+.ds q \N'34'
+.TH psb  __drivermansuffix__ __vendorversion__
+.SH NAME
+psb \- Poulsbo graphics chipsets
+.SH SYNOPSIS
+.nf
+.B "Section \*qDevice\*q"
+.BI "  Identifier \*q"  devname \*q
+.B  "  Driver \*qpsb\*q"
+\ \ ...
+.B EndSection
+.fi
+.SH DESCRIPTION
+.B psb
+is an __xservername__ driver for Intel Poulsbo graphics chipsets.
+The driver supports depths 8, 15, 16 and 24.  
+.SH SUPPORTED HARDWARE
+.B psb
+supports the Poulsbo chipsets.
+
+.SH CONFIGURATION DETAILS
+Please refer to __xconfigfile__(__filemansuffix__) for general configuration
+details.  This section only covers configuration details specific to this
+driver.
+.PP
+The following driver
+.B Options
+are supported
+.TP
+.BI "Option \*qNoAccel\*q \*q" boolean \*q
+Disable or enable acceleration.  Default: acceleration is enabled.
+.TP
+.BI "Option \*qShadowFB\*q \*q" boolean \*q
+Disable or enable shadowfb.  Default: shadowfb is disabled.
+.TP
+.BI "Option \*qSWCursor\*q \*q" boolean \*q
+Disable or enable software cursor.  Default: software cursor is disable
+and a hardware cursor is used for configurations where the hardware cursor
+is available.
+.TP
+.BI "Option \*qExaMem\*q \*q" integer \*q
+This sets the amount of video memory set aside for exa pixmap cache, it's
+allocated in megabytes. The default is 32Mb.
+Default: 32.
+.TP
+.BI "Option \*qExaScratch\*q \*q" integer \*q
+The driver will allocate 4Kb by default for exa scratch area.
+Default: 4
+.TP
+.BI "Option \*qDRI\*q \*q" boolean \*q
+Disable or enable DRI support.
+Default: DRI is enabled for configurations where it is supported.
+
+
+.SH "OLD-STYLE MULTIHEAD AND XRandR 1.2"
+The driver supports XRandR 1.2, and at the same time has an
+experimental support for old-style multihead / Xinerama. If the driver
+is set up to run on two different screens, the SDVO output will be
+configured for screen 0 and the LVDS output for screen 1. XRandR 1.2
+will then operate independently on the two screens. Currently there is
+no support for moving outputs between screens.
+
+.SH "SEE ALSO"
+__xservername__(__appmansuffix__), __xconfigfile__(__filemansuffix__), xorgconfig(__appmansuffix__), Xserver(__appmansuffix__), X(__miscmansuffix__)
+.SH AUTHORS
+Authors include: Thomas Hellström, Alan Hourihane, and Jakob
+Bornekrantz of Tungsten Graphics Inc,
+http://www.tungstengraphics.com. David Airlie, Eric Anholt and various
+other people contributing to the Intel i830 driver, from which much of
+the modesetting code is taken. Various people of Intel Corp.

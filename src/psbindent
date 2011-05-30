@@ -1,0 +1,4 @@
+#
+# Indent. At least almost according to the official xorg coding style.
+#
+indent -bad -bap -c40 -cd0 -ncdb -ci4 -cli0 -cp0 -ncs -d0 -di4 -i4 -ip4 -l78 -lp -npcs -psl -sob -ss -br -ce -sc $*
