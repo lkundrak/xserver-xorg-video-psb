@@ -301,6 +301,10 @@ static XF86ModuleVersionInfo psbVersionRec = {
     {0, 0, 0, 0}
 };
 
+/* compat cruft */
+_X_EXPORT BoxRec miEmptyBox;
+_X_EXPORT RegDataRec miEmptyData, miBrokenData;
+
 /*
  * This data is accessed by the loader.  The name must be the module name
  * followed by "ModuleData".
@@ -311,6 +315,10 @@ static pointer
 psbSetup(pointer Module, pointer Options, int *ErrorMajor, int *ErrorMinor)
 {
     static Bool Initialised = FALSE;
+
+    miEmptyBox = RegionEmptyBox;
+    miEmptyData = RegionEmptyData;
+    miBrokenData = RegionBrokenData;
 
     PSB_DEBUG(-1, 3, "psbSetup\n");
 
