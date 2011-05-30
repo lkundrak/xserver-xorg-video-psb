@@ -298,7 +298,7 @@ static void
 PSB_Sync(ScrnInfoPtr pScrn)
 {
     ScreenPtr pScreen = pScrn->pScreen;
-    WindowPtr pRoot = WindowTable[pScreen->myNum];
+    WindowPtr pRoot = pScreen->root;
     char buffer[4];
 
     pScreen->GetImage(&pRoot->drawable, 0, 0, 1, 1, ZPixmap, ~0L, buffer);
