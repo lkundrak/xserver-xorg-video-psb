@@ -43,7 +43,6 @@
 #include "xf86DDC.h"
 #include "shadow.h"
 #include "xf86int10.h"
-#include "mibank.h"
 #include "dgaproc.h"
 #if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) < 6
 #include "xf86Resources.h"
