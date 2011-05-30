@@ -30,6 +30,7 @@
 #include "xf86mm.h"
 #include "xf86drm.h"
 #include "stdio.h"
+#include <assert.h>
 
 /*
  * This is a simple wrapper around libdrm's buffer interface to be used 
