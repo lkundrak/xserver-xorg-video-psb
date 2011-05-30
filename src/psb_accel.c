@@ -308,6 +308,14 @@ psbAccelCompositeBugDelta1(unsigned rotation, int *xDelta, int *yDelta)
 }
 #endif
 
+static void*
+psbExaCreatePixmap(ScreenPtr pScreen, int w, int h, int depth, int usage_hint, int bpp, int* new_pitch  )
+{
+	return NULL;
+}
+static void
+psbExaDestroyPixmap(ScreenPtr pScreen, void* driverPriv ){
+}
 static Bool
 psbExaPixmapIsOffscreen(PixmapPtr p)
 {
@@ -1313,6 +1321,7 @@ psbExaInit(ScrnInfoPtr pScrn)
     pExa->pixmapOffsetAlign = 8;
     pExa->pixmapPitchAlign = 32 * 4;
     pExa->flags = EXA_OFFSCREEN_PIXMAPS;
+    pExa->flags |= EXA_HANDLES_PIXMAPS | EXA_MIXED_PIXMAPS;
     pExa->maxX = 2047;
     pExa->maxY = 2047;
     pExa->WaitMarker = psbExaWaitMarker;
@@ -1328,6 +1337,9 @@ psbExaInit(ScrnInfoPtr pScrn)
     pExa->Composite = psbExaSuperComposite;
     pExa->DoneComposite = psbExaDoneComposite;
     pExa->PixmapIsOffscreen = psbExaPixmapIsOffscreen;
+	pExa->CreatePixmap = NULL;
+	pExa->CreatePixmap2 = psbExaCreatePixmap;
+	pExa->DestroyPixmap = psbExaDestroyPixmap;
     pExa->PrepareAccess = psbExaPrepareAccess;
     pExa->FinishAccess = psbExaFinishAccess;
     pExa->UploadToScreen = psbExaUploadToScreen;
