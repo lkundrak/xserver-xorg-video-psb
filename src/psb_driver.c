@@ -624,6 +624,19 @@ psbPreInitDRI(ScrnInfoPtr pScrn)
     return TRUE;
 }
 
+/* removed in Xserver 1.7, add it again so that proprietary Xpsb can be loaded */
+void
+xf86AddModuleInfo(pointer info, pointer module)
+{
+}
+
+/* removed in mesa, add it again so that proprietary Xpsb can be loaded */
+typedef void (*_glapi_warning_func)(void *ctx, const char *str, ...);
+void
+_glapi_set_warning_func( _glapi_warning_func func )
+{
+}
+
 static Bool
 psbPreInitXpsb(ScrnInfoPtr pScrn)
 {
