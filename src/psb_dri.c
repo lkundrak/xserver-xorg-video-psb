@@ -548,8 +548,6 @@ psbDRIScreenInit(ScreenPtr pScreen)
 
     PSB_DEBUG(pScrn->scrnIndex, 3, "psbDRIScreenInit\n");
 
-    xf86LoaderReqSymLists(driReqSymbols, NULL);
-
     pPsb->pDRIInfo = NULL;
 
     /*

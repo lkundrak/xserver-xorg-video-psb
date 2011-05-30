@@ -317,12 +317,6 @@ psbSetup(pointer Module, pointer Options, int *ErrorMajor, int *ErrorMinor)
     if (!Initialised) {
 	Initialised = TRUE;
 	xf86AddDriver(&psb, Module, 0);
-	LoaderRefSymLists(fbSymbols, ddcSymbols, shadowSymbols,
-			  psbvgahwSymbols,
-#ifdef XF86DRI
-			  psbDRMSymbols, psbDRISymbols,
-#endif
-			  NULL);
 	return (pointer) TRUE;
     }
 
@@ -627,7 +621,6 @@ psbPreInitDRI(ScrnInfoPtr pScrn)
     if (!xf86LoadSubModule(pScrn, "dri"))
 	return FALSE;
 
-    xf86LoaderReqSymLists(psbDRISymbols, psbDRMSymbols, NULL);
     return TRUE;
 }
 
@@ -648,7 +641,6 @@ psbPreInitXpsb(ScrnInfoPtr pScrn)
 
     pPsb->xpsb = TRUE;
 
-    xf86LoaderReqSymLists(psbXpsbSymbols, NULL);
     return TRUE;
 }
 #endif
@@ -668,7 +660,6 @@ psbPreInitAccel(ScrnInfoPtr pScrn)
 	if (!xf86LoadSubModule(pScrn, "exa"))
 	    return FALSE;
 
-	xf86LoaderReqSymLists(exaSymbols, NULL);
     }
 
     xf86DrvMsg(pScrn->scrnIndex, from, "Acceleration %sabled\n",
@@ -708,7 +699,6 @@ psbPreInitShadowFB(ScrnInfoPtr pScrn)
 	if (!xf86LoadSubModule(pScrn, "shadow"))
 	    return FALSE;
 
-	xf86LoaderReqSymLists(shadowSymbols, NULL);
     }
 
     xf86DrvMsg(pScrn->scrnIndex, from, "Shadow framebuffer %sabled\n",
@@ -842,7 +832,6 @@ psbPreInit(ScrnInfoPtr pScrn, int flags)
 
     if (!xf86LoadSubModule(pScrn, "vbe"))
 	return FALSE;
-    xf86LoaderReqSymLists(vbeSymbols, NULL);
 
     /*
      * Parse options and load required modules here.
@@ -862,7 +851,6 @@ psbPreInit(ScrnInfoPtr pScrn, int flags)
 
     if (!xf86LoadSubModule(pScrn, "fb"))
 	return (FALSE);
-    xf86LoaderReqSymLists(fbSymbols, NULL);
 
     pScrn->chipset = "Intel GMA500";
     pScrn->monitor = pScrn->confScreen->monitor;
@@ -1021,7 +1009,6 @@ psbDeviceInit(PsbDevicePtr pDevice, int scrnIndex)
 
     if (!xf86LoadSubModule(pDevice->pScrns[0], "vgahw"))
 	return FALSE;
-    xf86LoaderReqSymLists(psbvgahwSymbols, NULL);
 
     if (!vgaHWGetHWRec(pDevice->pScrns[0]))
 	return FALSE;
