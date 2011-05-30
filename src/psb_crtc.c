@@ -431,7 +431,9 @@ psbSetWatermarks(ScrnInfoPtr pScrn)
 			if (bPlaneBEnabled)
 			{   
 				//current mode dot clock, HZ
-				DotClockB = output->crtc->mode.Clock * 1000 / WM_DOTCLOCK_DIVISOR;
+ 				if( output->crtc ){
+ 					DotClockB = output->crtc->mode.Clock * 1000 / WM_DOTCLOCK_DIVISOR;
+ 				}
 				BPPB = output->scrn->bitsPerPixel;
 			}
 		}
@@ -440,7 +442,9 @@ psbSetWatermarks(ScrnInfoPtr pScrn)
 		{
 			if (bPlaneAEnabled)
 			{
-				DotClockA = output->crtc->mode.Clock * 1000 / WM_DOTCLOCK_DIVISOR;
+ 				if( output->crtc ){
+ 					DotClockA = output->crtc->mode.Clock * 1000 / WM_DOTCLOCK_DIVISOR;
+ 				}
 				BPPA = output->scrn->bitsPerPixel;
 			}
 		}
