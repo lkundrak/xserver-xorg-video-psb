@@ -35,7 +35,7 @@
 #define _PSB_ACCEL_H_
 
 #include <xf86.h>
-#include "../exa/exa.h"
+#include "exa.h"
 #include "psb_buffers.h"
 #include "Xpsb.h"
 
