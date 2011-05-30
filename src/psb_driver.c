@@ -897,7 +897,7 @@ psbPreInit(ScrnInfoPtr pScrn, int flags)
     xf86DrvMsg(pScrn->scrnIndex, from, "Use %s cursor.\n",
 	       pPsb->sWCursor ? "software" : "hardware");
 
-    pPsb->ignoreACPI = FALSE;
+    pPsb->ignoreACPI = TRUE;
     from =
 	xf86GetOptValBool(pPsb->options, OPTION_IGNORE_ACPI,
 			  &pPsb->ignoreACPI)
