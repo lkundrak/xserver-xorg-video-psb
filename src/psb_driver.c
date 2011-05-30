@@ -741,7 +741,7 @@ psbInitOutputs(ScrnInfoPtr pScrn)
 
     xf86GetOptValBool(pPsb->options, OPTION_NOPANEL, &pPsb->noPanel);
 
-    pPsb->lidTimer = TRUE;
+    pPsb->lidTimer = FALSE;
     xf86GetOptValBool(pPsb->options, OPTION_LIDTIMER, &pPsb->lidTimer);
 
     xf86GetOptValBool(pPsb->options, OPTION_NOFITTING, &pPsb->noFitting);
