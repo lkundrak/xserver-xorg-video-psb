@@ -509,9 +509,14 @@ psbExaCheckComposite(int op,
 		     PicturePtr pSrcPicture, PicturePtr pMaskPicture,
 		     PicturePtr pDstPicture)
 {
+    int w, h;
     DrawablePtr pDraw = pSrcPicture->pDrawable;
-    int w = pDraw->width;
-    int h = pDraw->height;
+
+    if (!pDraw)
+        return FALSE;
+
+    w = pDraw->width;
+    h = pDraw->height;
 
     if (op > PictOpAdd)
 	return FALSE;
