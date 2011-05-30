@@ -686,8 +686,13 @@ psbDisplayVideo(ScrnInfoPtr pScrn, PsbPortPrivPtr pPriv, int id,
      * coordinates) to the backing pixmap.
      */
 
-    while (!psbExaGetSuperOffset(pPixmap, &pre_add, &dstBuf))
+    if(!psbExaGetSuperOffset(pPixmap, &pre_add, &dstBuf)){
 	exaMoveInPixmap(pPixmap);
+        if(!psbExaGetSuperOffset(pPixmap, &pre_add, &dstBuf)){
+             return FALSE;
+        }
+    }
+	
 
     dst.buffer = mmKernelBuf(dstBuf);
     dst.offset = pre_add;
