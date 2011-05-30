@@ -310,13 +310,13 @@ PSB_FillRect(ScrnInfoPtr pScrn,
 {
     GCPtr pGC;
     DrawablePtr pDrawable;
-    XID vals[1];
+    ChangeGCVal vals[1];
     xRectangle r;
 
     if (!xf86_dga_get_drawable_and_gc(pScrn, &pDrawable, &pGC))
 	return;
-    vals[0] = color;
-    ChangeGC(pGC, GCForeground, vals);
+    vals[0].val = color;
+    ChangeGC(NullClient, pGC, GCForeground, vals);
     ValidateGC(pDrawable, pGC);
     r.x = x;
     r.y = y;
