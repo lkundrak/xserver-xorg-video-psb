@@ -562,7 +562,6 @@ psbSetFront(ScrnInfoPtr pScrn)
 				psbScanoutStride(pPsb->front), fbMap);
 
     if (fbAccessDisabled) {
-	pScrn->pixmapPrivate.ptr = fbMap;
 	rootPixmap->devPrivate.ptr = NULL;
     }
 
