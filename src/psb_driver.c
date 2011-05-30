@@ -305,7 +305,7 @@ static XF86ModuleVersionInfo psbVersionRec = {
  * This data is accessed by the loader.  The name must be the module name
  * followed by "ModuleData".
  */
-XF86ModuleData psbModuleData = { &psbVersionRec, psbSetup, NULL };
+_X_EXPORT XF86ModuleData psbModuleData = { &psbVersionRec, psbSetup, NULL };
 
 static pointer
 psbSetup(pointer Module, pointer Options, int *ErrorMajor, int *ErrorMinor)
@@ -1011,11 +1011,13 @@ psbDeviceInit(PsbDevicePtr pDevice, int scrnIndex)
 
     PSB_DEBUG(scrnIndex, 3, "Initializing device\n");
 
+#ifndef XSERVER_LIBPCIACCESS
     if (xf86RegisterResources(pDevice->pEnt->index, NULL, ResExclusive)) {
 	xf86DrvMsg(scrnIndex, X_ERROR,
 		   "Could not registrer device. Resource conflict.\n");
 	return FALSE;
     }
+#endif
 
     if (!xf86LoadSubModule(pDevice->pScrns[0], "vgahw"))
 	return FALSE;

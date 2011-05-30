@@ -38,7 +38,9 @@
 #include "xf86drm.h"
 #include "xf86.h"
 #include "xf86_OSproc.h"
+#if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) < 6
 #include "xf86Resources.h"
+#endif
 #include "compiler.h"
 
 #define XPSB_VOFFSET_X 0
