@@ -141,7 +141,7 @@ typedef struct _MMManager
     int (*fenceWait) (struct _MMFence * mf, unsigned flushMask,
 		      unsigned flags);
     unsigned (*fenceError) (struct _MMFence * mf);
-    void (*fenceDestroy) (struct _MMFence * mf);
+    /* void (*fenceDestroy) (struct _MMFence * mf); */
 } MMManager;
 
 /*
@@ -204,6 +204,7 @@ mmFenceEmit(struct _MMFence *mf, unsigned class, unsigned type,
     return mf->man->fenceEmit(mf, class, type, flags);
 }
 
+/*
 static inline void
 mmFenceUnReference(struct _MMFence **mfP)
 {
@@ -214,6 +215,7 @@ mmFenceUnReference(struct _MMFence **mfP)
     }
     *mfP = NULL;
 }
+*/
 
 static inline struct _MMFence *
 mmFenceReference(struct _MMFence *mf)

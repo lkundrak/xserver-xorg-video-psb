@@ -277,6 +277,7 @@ createFence(struct _MMManager *mm,
     return &dFence->mf;
 }
 
+/*
 static void
 fenceDestroy(struct _MMFence *mf)
 {
@@ -288,6 +289,7 @@ fenceDestroy(struct _MMFence *mf)
     assert(ret == 0);
     free(dFence);
 }
+*/
 
 static int
 fenceEmit(struct _MMFence *mf, unsigned fence_class,
@@ -369,7 +371,7 @@ mmCreateDRM(int drmFD)
     mm->fenceSignaled = fenceSignaled;
     mm->fenceWait = fenceWait;
     mm->fenceError = NULL;
-    mm->fenceDestroy = fenceDestroy;
+    /* mm->fenceDestroy = fenceDestroy; */
     mm->destroy = destroy;
     return mm;
 

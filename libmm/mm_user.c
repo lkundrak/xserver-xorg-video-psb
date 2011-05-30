@@ -77,6 +77,7 @@ typedef struct _UserSignal
     UserManager *man;
 } UserSignal;
 
+/*
 void
 mmFenceSignal(struct _MMSignal *signal, unsigned class,
 	      unsigned type, unsigned sequence, unsigned error,
@@ -148,6 +149,7 @@ mmFenceSignal(struct _MMSignal *signal, unsigned class,
 	type |= fence->signalPrevious;
     }
 }
+*/
 
 static int
 fenceEmit(struct _MMFence *mf, unsigned class, unsigned type, unsigned flags)
